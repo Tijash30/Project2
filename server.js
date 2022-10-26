@@ -7,10 +7,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 
-var listInfo = [{title: "John", description: 20}, {title: "Mary", description: 30}];
+var listInfo = [{title: "John", description: "Hello im John and im from the beutiful city of Zapopan"}, {title: "Mary", description: "im Mary and i really like dogs, i actually have 6 in my house!"}];
 
 
-app.get('/blogs', (req, res) => {
+app.get('/', (req, res) => {
     res.render('pages/index', {
         listInfo: listInfo,
     });
@@ -32,7 +32,6 @@ app.post('/editblog' , (req, res) => {
     for (var i = 0; i < listInfo.length; i++) {
         if (listInfo[i].title == title) {
             listInfo[i].description = description;          
-
             res.render('pages/index', {listInfo: listInfo});
         }
     }
